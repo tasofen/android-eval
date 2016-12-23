@@ -7,7 +7,7 @@ package org.tikhonov24;
 
 public class Eval
 {
-    public double exec(String str)
+    public double exec(String str) throws Exception
     {
         str = str.replaceAll("[^0-9*/+-.()E]", "");
 
@@ -68,17 +68,27 @@ public class Eval
                 String action = str.substring(position, position+1);
                 double leftResult = exec(leftStr);
                 double rightResult = exec(rightStr);
+                double res = 0;
 
                 switch (action)
                 {
                     case "+":
-                        return leftResult + rightResult;
+                        res = leftResult + rightResult;
                     case "-":
-                        return leftResult - rightResult;
+                        res = leftResult - rightResult;
                     case "*":
-                        return leftResult * rightResult;
+                        res = leftResult * rightResult;
                     case "/":
-                        return  leftResult / rightResult;
+                        res =  leftResult / rightResult;
+                }
+
+                if(Double.isInfinite(res) || Double.isNaN(res))
+                {
+                    throw new Exception("Error");
+                }
+                else
+                {
+                    return res;
                 }
             }
         }
