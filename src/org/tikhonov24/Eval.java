@@ -1,7 +1,7 @@
 /**
  * @autor Tikhonov Alexander
  * @version 0.1.0b
- * @link https://github.com/tikhonov24/android-eval
+ * @link https://github.com/tasofen/android-eval
  */
 package org.tikhonov24;
 
